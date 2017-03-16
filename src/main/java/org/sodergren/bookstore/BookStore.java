@@ -6,6 +6,8 @@ import org.sodergren.model.entities.BookList;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static java.util.stream.Collectors.toList;
+
 public class BookStore implements BookList {
 
     private Map<String, UUID> searchIndex = new ConcurrentHashMap<>();
@@ -34,7 +36,35 @@ public class BookStore implements BookList {
      * @return True if book did not previously exist, false if book already exist in stock and the total quantity is updated.
      */
     public synchronized boolean add(Book book, int quantity) {
-        UUID id = book.getId();
+        return addBooksToStore(book, quantity);
+    }
+
+    public synchronized int[] buy(Book... books) {
+
+        final List<Status> result = new ArrayList<>(books.length);
+
+        for (Book book : books) {
+            UUID id = book.getId();
+
+            if (!store.containsKey(id)) {
+                result.add(Status.DOES_NOT_EXIST);
+                continue;
+            }
+
+            boolean didRemoveBooks = removeBooksFromStore(book, 1);
+
+            if (didRemoveBooks) {
+                result.add(Status.OK);
+            } else {
+                result.add(Status.NOT_IN_STOCK);
+            }
+        }
+
+        return statusListToIntArray(result);
+    }
+
+    private boolean addBooksToStore(Book book, int quantity) {
+        final UUID id = book.getId();
 
         if (store.containsKey(id)) {
             store.put(id, store.get(id).add(quantity));
@@ -46,29 +76,29 @@ public class BookStore implements BookList {
         return true;
     }
 
-    public synchronized int[] buy(Book... books) {
+    private boolean removeBooksFromStore(Book book, int quantity) {
+        final UUID id = book.getId();
 
-        List<Status> result = new ArrayList<>(books.length);
+        final BookStock stock = store.get(id);
 
-        for (Book book : books) {
-            UUID id = book.getId();
-
-            if (!store.containsKey(id)) {
-                result.add(Status.DOES_NOT_EXIST);
-                continue;
+        if (stock.getQuantity() >= quantity) {
+            store.put(id, stock.subtract(quantity));
+            if (store.get(id).getQuantity() == 0) {
+                removeBookFromIndex(id);
             }
-
-            BookStock stock = store.get(id);
-
-            if (stock.getQuantity() > 0) {
-                store.put(id, stock.subtract(1));
-                result.add(Status.OK);
-            } else {
-                result.add(Status.NOT_IN_STOCK);
-            }
+            return true;
+        } else {
+            return false;
         }
+    }
 
-        return statusListToIntArray(result);
+    private void removeBookFromIndex(UUID id) {
+        final List<String> toRemove = searchIndex.entrySet().stream()
+                .filter(entry -> entry.getValue().equals(id))
+                .map(Map.Entry::getKey)
+                .collect(toList());
+
+        toRemove.forEach(key -> searchIndex.remove(key));
     }
 
     private int[] statusListToIntArray(List<Status> result) {

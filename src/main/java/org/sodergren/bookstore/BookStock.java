@@ -4,7 +4,12 @@ import org.sodergren.model.entities.Book;
 
 import java.util.UUID;
 
-public class BookStock {
+/**
+ * Keeps track of the quantity in store for each book.
+ * <p>
+ * Immutable.
+ */
+class BookStock {
     private final UUID bookId;
     private final int quantity;
     private final Book book;
@@ -15,23 +20,23 @@ public class BookStock {
         this.quantity = quantity;
     }
 
-    public BookStock add(int amount) {
+    BookStock add(int amount) {
         return new BookStock(bookId, book, quantity + amount);
     }
 
 
-    public BookStock subtract(int amount) throws StockTooSmallException {
+    BookStock subtract(int amount) throws StockTooSmallException {
         if (quantity < amount) {
             throw new StockTooSmallException();
         }
         return new BookStock(bookId, book, quantity - amount);
     }
 
-    public int getQuantity() {
+    int getQuantity() {
         return quantity;
     }
 
-    public Book getBook() {
+    Book getBook() {
         return book;
     }
 }

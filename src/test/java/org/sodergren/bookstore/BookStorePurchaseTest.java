@@ -42,6 +42,9 @@ public class BookStorePurchaseTest {
         assertThat(bookStore.quantityFor(PELLE), equalTo(0));
         assertThat(bookStore.quantityFor(ALFONS), equalTo(1));
         assertThat(bookStore.quantityFor(EMIL), equalTo(1));
+
+        assertThat(bookStore.list("djungeln").length, equalTo(0));
+        assertThat(bookStore.list("Alfons").length, equalTo(1));
     }
 
 }
