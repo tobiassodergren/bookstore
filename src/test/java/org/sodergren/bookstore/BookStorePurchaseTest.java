@@ -13,9 +13,9 @@ import static org.sodergren.bookstore.BookStore.Status.*;
 
 public class BookStorePurchaseTest {
 
-    public static final Book PELLE = new Book("Pelle i djungeln", "Jan Lööf", BigDecimal.valueOf(29.99));
-    public static final Book ALFONS = new Book("Alfons Åberg", "Gunilla Bergström", BigDecimal.valueOf(85.5));
-    public static final Book EMIL = new Book("Emil i Lönneberga", "Astrid Lindgren", BigDecimal.valueOf(75));
+    private static final Book PELLE = new Book("Pelle i djungeln", "Jan Lööf", BigDecimal.valueOf(29.99));
+    private static final Book ALFONS = new Book("Alfons Åberg", "Gunilla Bergström", BigDecimal.valueOf(85.5));
+    private static final Book EMIL = new Book("Emil i Lönneberga", "Astrid Lindgren", BigDecimal.valueOf(75));
     private BookStore bookStore;
 
     @Before

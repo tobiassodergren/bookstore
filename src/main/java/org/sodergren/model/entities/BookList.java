@@ -1,7 +1,12 @@
 package org.sodergren.model.entities;
 
+/**
+ * Required API for the store
+ */
 public interface BookList {
-    public Book[] list(String searchString);
-    public boolean add(Book book, int quantity);
-    public int[] buy(Book... books);
+    Book[] list(String searchString);
+
+    boolean add(Book book, int quantity);
+
+    int[] buy(Book... books);
 }

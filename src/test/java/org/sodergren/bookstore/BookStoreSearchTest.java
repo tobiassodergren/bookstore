@@ -2,7 +2,6 @@ package org.sodergren.bookstore;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.sodergren.bookstore.BookStore.Status;
 import org.sodergren.model.entities.Book;
 
 import java.math.BigDecimal;
@@ -10,14 +9,13 @@ import java.math.BigDecimal;
 import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
-import static org.sodergren.bookstore.BookStore.Status.*;
 
 public class BookStoreSearchTest {
 
-    public static final Book PELLE = new Book("Pelle i djungeln", "Jan Lööf", BigDecimal.valueOf(29.99));
-    public static final Book ALFONS = new Book("Alfons Åberg", "Gunilla Bergström", BigDecimal.valueOf(85.5));
-    public static final Book EMIL = new Book("Emil i Lönneberga", "Astrid Lindgren", BigDecimal.valueOf(75));
-    public static final Book KRAKAN = new Book("Den lilla kråkan", "Pelle Bergstrand", BigDecimal.valueOf(15));
+    private static final Book PELLE = new Book("Pelle i djungeln", "Jan Lööf", BigDecimal.valueOf(29.99));
+    private static final Book ALFONS = new Book("Alfons Åberg", "Gunilla Bergström", BigDecimal.valueOf(85.5));
+    private static final Book EMIL = new Book("Emil i Lönneberga", "Astrid Lindgren", BigDecimal.valueOf(75));
+    private static final Book KRAKAN = new Book("Den lilla kråkan", "Pelle Bergstrand", BigDecimal.valueOf(15));
     private BookStore bookStore;
 
     @Before

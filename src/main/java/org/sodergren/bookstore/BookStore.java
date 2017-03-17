@@ -10,8 +10,8 @@ import static java.util.stream.Collectors.toList;
 
 public class BookStore implements BookList {
 
-    private Map<String, UUID> searchIndex = new ConcurrentHashMap<>();
-    private Map<UUID, BookStock> store = new HashMap<>();
+    private final Map<String, UUID> searchIndex = new ConcurrentHashMap<>();
+    private final Map<UUID, BookStock> store = new HashMap<>();
 
     /**
      * Find books containing instances of <pre>searchString</pre> in either author or title

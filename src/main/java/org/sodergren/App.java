@@ -5,7 +5,6 @@ import org.sodergren.importer.URLImporter;
 import org.sodergren.model.entities.BookList;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
