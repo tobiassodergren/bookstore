@@ -12,6 +12,9 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Responsible for parsing book and corresponding quantities from a string containing CSV values.
+ */
 class CSVParser {
     static List<StockImport> extractBookStockImport(String bookData) {
         Pattern pattern = Pattern.compile("^([^;]+);([^;]+);([^;]+);([^\n]+)$", Pattern.DOTALL | Pattern.MULTILINE);
