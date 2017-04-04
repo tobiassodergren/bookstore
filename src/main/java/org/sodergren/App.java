@@ -6,7 +6,6 @@ import org.sodergren.importer.URLImporter;
 import org.sodergren.jerseyserver.EmbeddedServer;
 import org.sodergren.model.entities.BookList;
 
-import java.io.IOException;
 import java.net.URL;
 
 /**
@@ -19,7 +18,7 @@ public class App {
 
         urlImporter.execute();
 
-        EmbeddedServer embeddedServer = new EmbeddedServer(5000, new CartRepository());
+        EmbeddedServer embeddedServer = new EmbeddedServer(5000, new CartRepository(), new BookStore());
 
 
     }

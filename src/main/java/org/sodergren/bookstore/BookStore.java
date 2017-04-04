@@ -63,6 +63,15 @@ public class BookStore implements BookList {
         return statusListToIntArray(result);
     }
 
+    @Override
+    public synchronized Book getById(UUID uuid) throws NotFoundException {
+        if (store.containsKey(uuid)) {
+            return store.get(uuid).getBook();
+        } else {
+            throw new NotFoundException("Book", uuid);
+        }
+    }
+
     private boolean addBooksToStore(Book book, int quantity) {
         final UUID id = book.getId();
 

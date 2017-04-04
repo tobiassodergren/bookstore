@@ -1,5 +1,9 @@
 package org.sodergren.model.entities;
 
+import org.sodergren.bookstore.NotFoundException;
+
+import java.util.UUID;
+
 /**
  * Required API for the store
  */
@@ -9,4 +13,6 @@ public interface BookList {
     boolean add(Book book, int quantity);
 
     int[] buy(Book... books);
+
+    Book getById(UUID uuid) throws NotFoundException;
 }

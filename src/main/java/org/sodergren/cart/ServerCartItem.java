@@ -12,9 +12,8 @@ public class ServerCartItem implements CartItem {
     private final int quantity;
 
     public ServerCartItem(Book book, int quantity) {
-
         this.book = book;
-        this.quantity = quantity;
+        this.quantity = quantity < 0 ? 0 : quantity;
     }
 
     @Override

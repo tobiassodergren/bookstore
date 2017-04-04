@@ -26,7 +26,7 @@ public class CartRepository {
         return cart;
     }
 
-    private Cart createCart() {
+    public Cart createCart() {
         ServerCart cart = new ServerCart();
         carts.put(cart.getId(), cart);
         return cart;
