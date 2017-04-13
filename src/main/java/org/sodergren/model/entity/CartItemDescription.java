@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 /**
- *
+ * This is an immutable copy of the CartItem state
  */
 public class CartItemDescription {
     public final UUID id;
