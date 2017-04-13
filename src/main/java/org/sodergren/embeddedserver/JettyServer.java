@@ -1,4 +1,4 @@
-package org.sodergren.jerseyserver;
+package org.sodergren.embeddedserver;
 
 import org.eclipse.jetty.server.Server;
 import org.glassfish.jersey.jetty.JettyHttpContainerFactory;
@@ -10,9 +10,9 @@ import org.sodergren.restapi.SessionDrivenRestApi;
 import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
 
-public class EmbeddedServer {
+public class JettyServer {
 
-    public EmbeddedServer(int port, CartRepository repo, BookList bookList) throws Exception {
+    public JettyServer(int port, CartRepository repo, BookList bookList) throws Exception {
         URI baseUri = UriBuilder.fromUri("http://localhost/").port(port)
                 .build();
 
@@ -26,7 +26,7 @@ public class EmbeddedServer {
 //        ContextHandler contextHandler = new ContextHandler("/api");
 //        contextHandler.setHandler(server.getHandler());
 //
-//        ProtectionDomain protectionDomain = EmbeddedServer.class
+//        ProtectionDomain protectionDomain = JettyServer.class
 //                .getProtectionDomain();
 //        URL location = protectionDomain.getCodeSource().getLocation();
 //

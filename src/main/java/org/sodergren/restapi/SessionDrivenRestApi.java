@@ -3,15 +3,14 @@ package org.sodergren.restapi;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.sodergren.cart.CartRepository;
 import org.sodergren.model.entities.BookList;
-import org.sodergren.model.entities.Cart;
 import org.sodergren.restapi.operation.CreateCartOperation;
 import org.sodergren.restapi.operation.GetCartOperation;
-import org.sodergren.restapi.operation.UpdateQuantityOperation;
+import org.sodergren.restapi.operation.SearchBooksOperation;
+import org.sodergren.restapi.operation.UpdateCartQuantityOperation;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.UUID;
 
 @Path("/api/v1")
 public class SessionDrivenRestApi extends ResourceConfig {
@@ -42,7 +41,14 @@ public class SessionDrivenRestApi extends ResourceConfig {
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     public Response setQuantityForItem(@PathParam("cartId") String cartId, @QueryParam("bookId") String bookId, @QueryParam("quantity") int quantity) {
-        return new UpdateQuantityOperation(cartRepository, bookStore, cartId, bookId, quantity).execute();
+        return new UpdateCartQuantityOperation(cartRepository, bookStore, cartId, bookId, quantity).execute();
+    }
+
+    @Path("books")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response searchBooks(@QueryParam("query") String query) {
+        return new SearchBooksOperation(bookStore, query).execute();
     }
 
 }

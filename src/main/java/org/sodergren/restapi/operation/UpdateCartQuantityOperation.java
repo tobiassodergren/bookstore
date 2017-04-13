@@ -5,18 +5,19 @@ import org.sodergren.cart.CartRepository;
 import org.sodergren.model.entities.Book;
 import org.sodergren.model.entities.BookList;
 import org.sodergren.model.entities.Cart;
+import org.sodergren.restapi.response.CartResponse;
 
 import javax.ws.rs.core.Response;
 import java.util.UUID;
 
-public class UpdateQuantityOperation extends OperationBase {
+public class UpdateCartQuantityOperation extends OperationBase {
     private final CartRepository cartRepository;
     private final BookList bookList;
     private final String cartId;
     private final String bookId;
     private final int quantity;
 
-    public UpdateQuantityOperation(CartRepository cartRepository, BookList bookList, String cartId, String bookId, int quantity) {
+    public UpdateCartQuantityOperation(CartRepository cartRepository, BookList bookList, String cartId, String bookId, int quantity) {
         this.cartRepository = cartRepository;
         this.bookList = bookList;
         this.cartId = cartId;
@@ -36,6 +37,8 @@ public class UpdateQuantityOperation extends OperationBase {
 
             cart.addItemToList(book, quantity);
 
+            return Response.ok(new CartResponse(cart).toJson()).build();
+
         } catch (UUIDException e) {
             return Response
                     .status(Response.Status.BAD_REQUEST)
@@ -48,6 +51,5 @@ public class UpdateQuantityOperation extends OperationBase {
                     .build();
         }
 
-        return Response.serverError().build();
     }
 }

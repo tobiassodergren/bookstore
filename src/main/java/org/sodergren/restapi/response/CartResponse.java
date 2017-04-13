@@ -1,9 +1,8 @@
 package org.sodergren.restapi.response;
 
 import org.sodergren.model.entities.Cart;
+import org.sodergren.model.entities.CartItemDescription;
 import org.sodergren.restapi.json.JSON;
-
-// TODO Jaxon
 
 public class CartResponse {
     private final Cart cart;
@@ -18,14 +17,19 @@ public class CartResponse {
                 .put("total", cart.getTotal())
                 .put("items", JSON.makeArray().addItems(
                         cart.getItems(),
-                        (item) -> JSON.makeObject()
-                                .put("uuid", item.getId())
-                                .put("description", item.getDescription())
-                                .put("price", item.getPrice())
-                                .build())
+                        (item) -> {
+                            CartItemDescription description = item.getDescription();
+                            return JSON.makeObject()
+                                    .put("uuid", item.getId().toString())
+                                    .put("title", description.title)
+                                    .put("author", description.author)
+                                    .put("quantity", description.quantity)
+                                    .put("price", item.getPrice())
+                                    .build();
+
+                        })
                         .build())
                 .build()
                 .toJson();
     }
-
 }
