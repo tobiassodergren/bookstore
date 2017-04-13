@@ -1,6 +1,6 @@
 package org.sodergren.importer;
 
-import org.sodergren.model.entities.BookList;
+import org.sodergren.model.entity.BookList;
 
 import java.io.IOException;
 import java.io.InputStream;

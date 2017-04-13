@@ -1,6 +1,6 @@
 package org.sodergren.bookstore;
 
-import org.sodergren.model.entities.Book;
+import org.sodergren.model.entity.Book;
 
 import java.util.UUID;
 

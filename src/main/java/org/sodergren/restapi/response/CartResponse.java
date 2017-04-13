@@ -1,7 +1,7 @@
 package org.sodergren.restapi.response;
 
-import org.sodergren.model.entities.Cart;
-import org.sodergren.model.entities.CartItemDescription;
+import org.sodergren.model.entity.Cart;
+import org.sodergren.model.entity.CartItemDescription;
 import org.sodergren.restapi.json.JSON;
 
 public class CartResponse {

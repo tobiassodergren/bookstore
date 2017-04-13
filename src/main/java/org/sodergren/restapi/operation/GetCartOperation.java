@@ -1,7 +1,7 @@
 package org.sodergren.restapi.operation;
 
 import org.sodergren.cart.CartRepository;
-import org.sodergren.model.entities.Cart;
+import org.sodergren.model.entity.Cart;
 import org.sodergren.restapi.response.CartResponse;
 
 import javax.ws.rs.core.Response;

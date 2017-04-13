@@ -1,6 +1,6 @@
 package org.sodergren.importer;
 
-import org.sodergren.model.entities.Book;
+import org.sodergren.model.entity.Book;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;

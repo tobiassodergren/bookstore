@@ -1,8 +1,8 @@
 package org.sodergren.cart;
 
-import org.sodergren.model.entities.Book;
-import org.sodergren.model.entities.Cart;
-import org.sodergren.model.entities.CartItem;
+import org.sodergren.model.entity.Book;
+import org.sodergren.model.entity.Cart;
+import org.sodergren.model.entity.CartItem;
 
 import java.math.BigDecimal;
 import java.util.*;

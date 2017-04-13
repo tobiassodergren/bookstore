@@ -4,7 +4,7 @@ import org.sodergren.bookstore.BookStore;
 import org.sodergren.cart.CartRepository;
 import org.sodergren.embeddedserver.JettyServer;
 import org.sodergren.importer.URLImporter;
-import org.sodergren.model.entities.BookList;
+import org.sodergren.model.entity.BookList;
 
 import java.net.URL;
 

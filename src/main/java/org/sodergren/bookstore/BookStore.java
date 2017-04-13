@@ -1,7 +1,7 @@
 package org.sodergren.bookstore;
 
-import org.sodergren.model.entities.Book;
-import org.sodergren.model.entities.BookList;
+import org.sodergren.model.entity.Book;
+import org.sodergren.model.entity.BookList;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;

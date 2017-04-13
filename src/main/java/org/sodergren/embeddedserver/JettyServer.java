@@ -4,7 +4,7 @@ import org.eclipse.jetty.server.Server;
 import org.glassfish.jersey.jetty.JettyHttpContainerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.sodergren.cart.CartRepository;
-import org.sodergren.model.entities.BookList;
+import org.sodergren.model.entity.BookList;
 import org.sodergren.restapi.SessionDrivenRestApi;
 
 import javax.ws.rs.core.UriBuilder;

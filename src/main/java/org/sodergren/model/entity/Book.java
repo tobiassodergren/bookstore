@@ -1,4 +1,4 @@
-package org.sodergren.model.entities;
+package org.sodergren.model.entity;
 
 import java.math.BigDecimal;
 import java.nio.charset.Charset;

@@ -1,6 +1,6 @@
 package org.sodergren.restapi.response;
 
-import org.sodergren.model.entities.Book;
+import org.sodergren.model.entity.Book;
 import org.sodergren.restapi.json.JSON;
 import org.sodergren.restapi.json.JSONArrayBuilder;
 import org.sodergren.restapi.json.JSONObject;

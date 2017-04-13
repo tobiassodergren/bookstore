@@ -1,7 +1,7 @@
 package org.sodergren.cart;
 
 import org.junit.Test;
-import org.sodergren.model.entities.Book;
+import org.sodergren.model.entity.Book;
 
 import java.math.BigDecimal;
 

@@ -1,6 +1,6 @@
 package org.sodergren.importer;
 
-import org.sodergren.model.entities.Book;
+import org.sodergren.model.entity.Book;
 
 /**
  * Class containing import data for initializing a BookList implementation with books.

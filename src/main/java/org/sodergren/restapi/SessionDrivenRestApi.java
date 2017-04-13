@@ -2,7 +2,7 @@ package org.sodergren.restapi;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.sodergren.cart.CartRepository;
-import org.sodergren.model.entities.BookList;
+import org.sodergren.model.entity.BookList;
 import org.sodergren.restapi.operation.CreateCartOperation;
 import org.sodergren.restapi.operation.GetCartOperation;
 import org.sodergren.restapi.operation.SearchBooksOperation;

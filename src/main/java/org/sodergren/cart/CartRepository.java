@@ -1,6 +1,6 @@
 package org.sodergren.cart;
 
-import org.sodergren.model.entities.Cart;
+import org.sodergren.model.entity.Cart;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

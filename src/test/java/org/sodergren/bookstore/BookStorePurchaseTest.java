@@ -3,7 +3,7 @@ package org.sodergren.bookstore;
 import org.junit.Before;
 import org.junit.Test;
 import org.sodergren.bookstore.BookStore.Status;
-import org.sodergren.model.entities.Book;
+import org.sodergren.model.entity.Book;
 
 import java.math.BigDecimal;
 

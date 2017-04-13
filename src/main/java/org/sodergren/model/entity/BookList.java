@@ -1,4 +1,4 @@
-package org.sodergren.model.entities;
+package org.sodergren.model.entity;
 
 import org.sodergren.bookstore.NotFoundException;
 

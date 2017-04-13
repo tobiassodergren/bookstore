@@ -2,9 +2,9 @@ package org.sodergren.restapi.operation;
 
 import org.sodergren.bookstore.NotFoundException;
 import org.sodergren.cart.CartRepository;
-import org.sodergren.model.entities.Book;
-import org.sodergren.model.entities.BookList;
-import org.sodergren.model.entities.Cart;
+import org.sodergren.model.entity.Book;
+import org.sodergren.model.entity.BookList;
+import org.sodergren.model.entity.Cart;
 import org.sodergren.restapi.response.CartResponse;
 
 import javax.ws.rs.core.Response;

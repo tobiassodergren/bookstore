@@ -1,7 +1,7 @@
 package org.sodergren.restapi.operation;
 
-import org.sodergren.model.entities.Book;
-import org.sodergren.model.entities.BookList;
+import org.sodergren.model.entity.Book;
+import org.sodergren.model.entity.BookList;
 import org.sodergren.restapi.response.BookSearchResponse;
 
 import javax.ws.rs.core.MediaType;
