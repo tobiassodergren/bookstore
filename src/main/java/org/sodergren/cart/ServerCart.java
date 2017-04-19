@@ -48,7 +48,7 @@ public class ServerCart implements Cart {
     public synchronized BigDecimal getTotal() {
         return items.values()
                 .stream()
-                .map(ServerCartItem::getPrice)
+                .map(ServerCartItem::getCost)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 

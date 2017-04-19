@@ -8,8 +8,8 @@ import java.util.UUID;
 
 public class CartRepository {
 
-    // TODO remove carts that was least recently used. Or use guava Cache
-    Map<UUID, ServerCart> carts = new LinkedHashMap<>(16, 0.75f, true);
+    // TODO Replace this with Google Guava cache instead
+    Map<UUID, ServerCart> carts = new CartCache<>();
 
     public Cart getCartById(UUID cartId) {
 

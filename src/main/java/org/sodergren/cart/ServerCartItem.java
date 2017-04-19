@@ -18,11 +18,11 @@ public class ServerCartItem implements CartItem {
 
     @Override
     public CartItemDescription getDescription() {
-        return new CartItemDescription(book.getId(), book.getTitle(), book.getAuthor(), this.getPrice(), quantity);
+        return new CartItemDescription(book.getId(), book.getTitle(), book.getAuthor(), book.getPrice(), quantity);
     }
 
     @Override
-    public BigDecimal getPrice() {
+    public BigDecimal getCost() {
         return this.book.getPrice().multiply(BigDecimal.valueOf(quantity));
     }
 

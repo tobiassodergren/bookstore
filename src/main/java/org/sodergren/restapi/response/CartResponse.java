@@ -24,7 +24,8 @@ public class CartResponse {
                                     .put("title", description.title)
                                     .put("author", description.author)
                                     .put("quantity", description.quantity)
-                                    .put("price", item.getPrice())
+                                    .put("price", description.price)
+                                    .put("cost", item.getCost())
                                     .build();
 
                         })

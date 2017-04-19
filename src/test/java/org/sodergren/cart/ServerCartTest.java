@@ -46,6 +46,6 @@ public class ServerCartTest {
         serverCart.addItemToList(BOOK_1, 2);
 
         assertThat(serverCart.getItems().size(), equalTo(1));
-        assertThat(serverCart.getItems().get(0).getPrice(), equalTo(BigDecimal.valueOf(5 * BOOK_1.getPrice().doubleValue())));
+        assertThat(serverCart.getItems().get(0).getCost(), equalTo(BigDecimal.valueOf(5 * BOOK_1.getPrice().doubleValue())));
     }
 }

@@ -13,11 +13,14 @@ import java.net.URL;
  */
 public class App {
     public static void main(String[] args) throws Exception {
+
         BookList store = new BookStore();
         CartRepository cartRepository = new CartRepository();
 
-        URLImporter urlImporter = new URLImporter(store, new URL("http://www.contribe.se/bookstoredata/bookstoredata.txt"));
-        urlImporter.execute();
+        if (args.length > 0) {
+            URLImporter urlImporter = new URLImporter(store, new URL(args[0]));
+            urlImporter.execute();
+        }
 
         JettyServer embeddedServer = new JettyServer(5000, cartRepository, store);
 

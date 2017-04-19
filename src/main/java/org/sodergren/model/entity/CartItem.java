@@ -6,7 +6,7 @@ import java.util.UUID;
 public interface CartItem {
     CartItemDescription getDescription();
 
-    BigDecimal getPrice();
+    BigDecimal getCost();
 
     UUID getId();
 }
