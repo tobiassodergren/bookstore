@@ -17,7 +17,7 @@ public class BookStock {
     BookStock(UUID id, Book book, int quantity) {
         this.bookId = id;
         this.book = book;
-        this.quantity = quantity;
+        this.quantity = quantity >= 0 ? quantity : 0;
     }
 
     BookStock add(int amount) {

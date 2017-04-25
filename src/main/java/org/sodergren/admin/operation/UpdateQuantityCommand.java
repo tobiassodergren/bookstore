@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UpdateQuantityCommand implements Command {
-    private static final Pattern PATTERN = Pattern.compile("update quantity \\s*([^\\s]+)\\s(\\d+)");
+    private static final Pattern PATTERN = Pattern.compile("update quantity \\s*([^\\s]+)\\s(-?\\d+)");
     private final BookStore store;
 
     public UpdateQuantityCommand(BookStore store) {
