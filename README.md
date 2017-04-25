@@ -50,7 +50,7 @@ java version "1.8.0"
 $ java -jar target/bookstore-1.0-SNAPSHOT.jar file:books.csv
 ```
 
-A REPL will start. enter help and press Enter to administrate the book store
+A REPL will start. enter `help` and press `Enter` to administrate the book store
 
 ## Rest API
 
