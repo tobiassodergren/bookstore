@@ -1,5 +1,6 @@
 package org.sodergren.bookstore;
 
+import org.sodergren.model.BookOrderStatus;
 import org.sodergren.model.entity.Book;
 import org.sodergren.model.entity.BookList;
 
@@ -19,6 +20,7 @@ public class BookStore implements BookList {
      * @param searchString A partial name of either author or book title
      * @return A array of {@link Book}s that matched the <pre>searchString</pre>.
      */
+    @Override
     public Book[] list(String searchString) {
         return searchIndex.entrySet().stream()
                 .filter((entry) -> searchString.isEmpty() || entry.getKey().contains(searchString))
@@ -35,28 +37,30 @@ public class BookStore implements BookList {
      * @param quantity The quantity to add for the specified book
      * @return True if book did not previously exist, false if book already exist in stock and the total quantity is updated.
      */
+    @Override
     public synchronized boolean add(Book book, int quantity) {
         return addBooksToStore(book, quantity);
     }
 
+    @Override
     public synchronized int[] buy(Book... books) {
 
-        final List<Status> result = new ArrayList<>(books.length);
+        final List<BookOrderStatus> result = new ArrayList<>(books.length);
 
         for (Book book : books) {
             UUID id = book.getId();
 
             if (!store.containsKey(id)) {
-                result.add(Status.DOES_NOT_EXIST);
+                result.add(BookOrderStatus.DOES_NOT_EXIST);
                 continue;
             }
 
             boolean didRemoveBooks = removeBooksFromStore(book, 1);
 
             if (didRemoveBooks) {
-                result.add(Status.OK);
+                result.add(BookOrderStatus.OK);
             } else {
-                result.add(Status.NOT_IN_STOCK);
+                result.add(BookOrderStatus.NOT_IN_STOCK);
             }
         }
 
@@ -70,6 +74,10 @@ public class BookStore implements BookList {
         } else {
             throw new NotFoundException("Book", uuid);
         }
+    }
+
+    public Collection<BookStock> getStock() {
+        return store.values();
     }
 
     private boolean addBooksToStore(Book book, int quantity) {
@@ -110,7 +118,7 @@ public class BookStore implements BookList {
         toRemove.forEach(key -> searchIndex.remove(key));
     }
 
-    private int[] statusListToIntArray(List<Status> result) {
+    private int[] statusListToIntArray(List<BookOrderStatus> result) {
         int[] intResult = new int[result.size()];
 
         for (int i = 0; i < result.size(); i++) {
@@ -127,29 +135,4 @@ public class BookStore implements BookList {
         return 0;
     }
 
-    public enum Status {
-        OK(0),
-        NOT_IN_STOCK(1),
-        DOES_NOT_EXIST(2);
-
-        private final int statusCode;
-
-        Status(int statusCode) {
-            this.statusCode = statusCode;
-        }
-
-        public static Status get(int i) {
-            for (Status value : Status.values()) {
-                if (value.getStatusCode() == i) {
-                    return value;
-                }
-            }
-
-            throw new IllegalArgumentException("Could not find status for code: " + i);
-        }
-
-        public int getStatusCode() {
-            return statusCode;
-        }
-    }
 }

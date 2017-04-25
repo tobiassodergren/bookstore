@@ -53,6 +53,11 @@ public class ServerCart implements Cart {
     }
 
     @Override
+    public Book[] toOrder() {
+        return new Book[0];
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

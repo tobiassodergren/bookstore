@@ -3,10 +3,7 @@ package org.sodergren.restapi;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.sodergren.cart.CartRepository;
 import org.sodergren.model.entity.BookList;
-import org.sodergren.restapi.operation.CreateCartOperation;
-import org.sodergren.restapi.operation.GetCartOperation;
-import org.sodergren.restapi.operation.SearchBooksOperation;
-import org.sodergren.restapi.operation.UpdateCartQuantityOperation;
+import org.sodergren.restapi.operation.*;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -42,6 +39,13 @@ public class SessionDrivenRestApi extends ResourceConfig {
     @Produces(MediaType.APPLICATION_JSON)
     public Response setQuantityForItem(@PathParam("cartId") String cartId, @QueryParam("bookId") String bookId, @QueryParam("quantity") int quantity) {
         return new UpdateCartQuantityOperation(cartRepository, bookStore, cartId, bookId, quantity).execute();
+    }
+
+    @Path("cart/{cartId}/checkout")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response checkout(@PathParam("cartId") String cartId) {
+        return new CheckoutCartOperation(cartRepository, bookStore, cartId).execute();
     }
 
     @Path("books")

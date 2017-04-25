@@ -1,5 +1,6 @@
 package org.sodergren;
 
+import org.sodergren.admin.AdminRepl;
 import org.sodergren.bookstore.BookStore;
 import org.sodergren.cart.CartRepository;
 import org.sodergren.embeddedserver.JettyServer;
@@ -14,7 +15,7 @@ import java.net.URL;
 public class App {
     public static void main(String[] args) throws Exception {
 
-        BookList store = new BookStore();
+        BookStore store = new BookStore();
         CartRepository cartRepository = new CartRepository();
 
         if (args.length > 0) {
@@ -23,6 +24,8 @@ public class App {
         }
 
         JettyServer embeddedServer = new JettyServer(5000, cartRepository, store);
+
+        AdminRepl repl = new AdminRepl(cartRepository, store);
 
     }
 }

@@ -14,4 +14,6 @@ public interface Cart {
     void removeItem(UUID cartItemId);
 
     BigDecimal getTotal();
+
+    Book[] toOrder();
 }

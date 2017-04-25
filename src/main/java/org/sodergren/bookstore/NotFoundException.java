@@ -2,7 +2,7 @@ package org.sodergren.bookstore;
 
 import java.util.UUID;
 
-public class NotFoundException extends Throwable {
+public class NotFoundException extends Exception {
     private final String entityType;
     private final UUID uuid;
 

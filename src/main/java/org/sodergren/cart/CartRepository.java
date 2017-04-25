@@ -2,9 +2,7 @@ package org.sodergren.cart;
 
 import org.sodergren.model.entity.Cart;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class CartRepository {
 
@@ -32,4 +30,7 @@ public class CartRepository {
         return cart;
     }
 
+    public Collection<ServerCart> getCarts() {
+        return carts.values();
+    }
 }

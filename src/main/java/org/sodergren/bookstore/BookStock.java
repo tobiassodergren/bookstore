@@ -9,7 +9,7 @@ import java.util.UUID;
  * <p>
  * Immutable.
  */
-class BookStock {
+public class BookStock {
     private final UUID bookId;
     private final int quantity;
     private final Book book;
@@ -32,11 +32,11 @@ class BookStock {
         return new BookStock(bookId, book, quantity - amount);
     }
 
-    int getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    Book getBook() {
+    public Book getBook() {
         return book;
     }
 }

@@ -23,21 +23,6 @@ public class JettyServer {
         Server server = JettyHttpContainerFactory.createServer(baseUri, app,
                 false);
 
-//        ContextHandler contextHandler = new ContextHandler("/api");
-//        contextHandler.setHandler(server.getHandler());
-//
-//        ProtectionDomain protectionDomain = JettyServer.class
-//                .getProtectionDomain();
-//        URL location = protectionDomain.getCodeSource().getLocation();
-//
-//        ResourceHandler resourceHandler = new ResourceHandler();
-//        resourceHandler.setResourceBase(location.toExternalForm());
-//        System.out.println(location.toExternalForm());
-//        HandlerCollection handlerCollection = new HandlerCollection();
-//        handlerCollection.setHandlers(new Handler[] { resourceHandler,
-//                contextHandler, new DefaultHandler() });
-//        server.setHandler(handlerCollection);
         server.start();
-        server.join();
     }
 }
