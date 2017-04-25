@@ -5,7 +5,7 @@ import org.sodergren.restapi.json.JSON;
 import javax.ws.rs.core.Response;
 import java.util.UUID;
 
-public abstract class OperationBase {
+abstract class OperationBase {
     public abstract Response execute();
 
     String generateErrorBody(String errorMessage, Throwable e) {

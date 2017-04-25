@@ -10,9 +10,9 @@ import static org.junit.Assert.assertThat;
 
 public class ServerCartTest {
 
-    public static final Book BOOK_1 = new Book("title 1", "author 1", BigDecimal.valueOf(15.4));
-    public static final Book BOOK_2 = new Book("title 2", "author 2", BigDecimal.valueOf(7));
-    public static final Book BOOK_3 = new Book("title 3", "author 3", BigDecimal.valueOf(0.23));
+    private static final Book BOOK_1 = new Book("title 1", "author 1", BigDecimal.valueOf(15.4));
+    private static final Book BOOK_2 = new Book("title 2", "author 2", BigDecimal.valueOf(7));
+    private static final Book BOOK_3 = new Book("title 3", "author 3", BigDecimal.valueOf(0.23));
 
     @Test
     public void shouldSumPriceAndQuantity() {

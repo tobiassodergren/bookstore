@@ -6,16 +6,16 @@ import java.util.Map;
 import java.util.function.BiFunction;
 
 /**
- * Unfriendly implementation of a session based cart. This should be replaced with a client-side
- * cart, stored either in local store or as a cookie.
- *
+ * This implementation relies on a linkedhashmap that keeps track of access order of items.
+ * It removes items from cache when the cart has not been accessed for {@link CartCache#maxDuration} milliseconds.
+ **
  * @param <A> The key for cache
  * @param <B> The cached value
  */
-public class CartCache<A, B> extends LinkedHashMap<A, B> {
+class CartCache<A, B> extends LinkedHashMap<A, B> {
 
     private long maxDuration = 60 * 60 * 1000; // Default 60 min timeout for cart
-    private Map<A, Long> sessionTimestamp = new HashMap<>();
+    private final Map<A, Long> sessionTimestamp = new HashMap<>();
 
     public CartCache() {
         super(16, 0.75f, true);

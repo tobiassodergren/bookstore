@@ -18,7 +18,7 @@ public class ServerCartItem implements CartItem {
 
     @Override
     public CartItemDescription getDescription() {
-        return new CartItemDescription(book.getId(), book.getTitle(), book.getAuthor(), book.getPrice(), quantity);
+        return new CartItemDescription(book.getTitle(), book.getAuthor(), book.getPrice(), quantity);
     }
 
     @Override
@@ -38,7 +38,6 @@ public class ServerCartItem implements CartItem {
         return book.getId();
     }
 
-    @Override
     public int getQuantity() {
         return this.quantity;
     }

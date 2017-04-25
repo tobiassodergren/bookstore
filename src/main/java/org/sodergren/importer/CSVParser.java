@@ -1,7 +1,6 @@
 package org.sodergren.importer;
 
 import org.sodergren.model.entity.Book;
-import org.sodergren.model.util.ParserUtil;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

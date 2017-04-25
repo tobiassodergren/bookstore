@@ -5,7 +5,7 @@ import org.sodergren.model.entity.Book;
 /**
  * Class containing import data for initializing a BookList implementation with books.
  */
-public class StockImport {
+class StockImport {
     final Book book;
     final int quantity;
 

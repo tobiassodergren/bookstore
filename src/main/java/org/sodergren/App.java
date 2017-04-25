@@ -5,12 +5,11 @@ import org.sodergren.bookstore.BookStore;
 import org.sodergren.cart.CartRepository;
 import org.sodergren.embeddedserver.JettyServer;
 import org.sodergren.importer.URLImporter;
-import org.sodergren.model.entity.BookList;
 
 import java.net.URL;
 
 /**
- * Hello world!
+ * The main application that initiates a book store, cart repository and optionally imports from a URL
  */
 public class App {
     public static void main(String[] args) throws Exception {
@@ -23,9 +22,9 @@ public class App {
             urlImporter.execute();
         }
 
-        JettyServer embeddedServer = new JettyServer(5000, cartRepository, store);
+        new JettyServer(5000, cartRepository, store);
 
-        AdminRepl repl = new AdminRepl(cartRepository, store);
+        new AdminRepl(cartRepository, store);
 
     }
 }

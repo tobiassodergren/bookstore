@@ -1,6 +1,5 @@
 package org.sodergren.restapi.operation;
 
-import org.sodergren.bookstore.BookStore;
 import org.sodergren.bookstore.NotFoundException;
 import org.sodergren.cart.CartRepository;
 import org.sodergren.model.entity.Book;
@@ -40,7 +39,7 @@ public class CheckoutCartOperation extends OperationBase {
                     Book book = bookStore.getById(uuid);
                     books.add(book);
                 } catch (NotFoundException e) {
-                    books.add(Book.UNEXISTING);
+                    books.add(Book.NOT_EXISTING);
                 }
             }
 

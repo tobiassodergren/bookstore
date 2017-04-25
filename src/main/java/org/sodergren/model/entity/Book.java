@@ -9,7 +9,7 @@ import java.util.UUID;
  * is probably fine for this example code.
  */
 public class Book {
-    public static final Book UNEXISTING = new Book();
+    public static final Book NOT_EXISTING = new Book();
 
     private final UUID id;
     private final String title;

@@ -3,7 +3,6 @@ package org.sodergren.admin.operation;
 import org.sodergren.admin.Command;
 import org.sodergren.bookstore.BookStock;
 import org.sodergren.bookstore.BookStore;
-import org.sodergren.model.entity.Book;
 
 import java.util.Collection;
 import java.util.regex.Matcher;

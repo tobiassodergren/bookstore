@@ -3,7 +3,6 @@ package org.sodergren.admin;
 import org.sodergren.admin.operation.*;
 import org.sodergren.bookstore.BookStore;
 import org.sodergren.cart.CartRepository;
-import org.sodergren.model.entity.BookList;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,9 +13,9 @@ import java.util.regex.Matcher;
 
 public class AdminRepl {
 
-    private List<Command> operations = new ArrayList<>();
-
     public AdminRepl(CartRepository cartRepository, BookStore bookStore) throws IOException {
+
+        List<Command> operations = new ArrayList<>();
 
         operations.add(new ListCartsCommand(cartRepository));
         operations.add(new ListBooksCommand(bookStore));
@@ -30,28 +29,28 @@ public class AdminRepl {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         while (true) {
-            System.out.print("[cmd], 'help' for help   > ");
-            String line = reader.readLine().trim();
-            operations.forEach(o -> {
-                Matcher matcher = o.getLinePattern().matcher(line);
-                if (matcher.find()) {
-                    o.executeLine(matcher);
-                }
-            });
+            try {
+                System.out.print("[Enter cmd], 'help' for help > ");
+                String line = reader.readLine().trim();
+                operations.forEach(o -> {
+                    Matcher matcher = o.getLinePattern().matcher(line);
+                    if (matcher.find()) {
+                        o.executeLine(matcher);
+                    }
+                });
+            } catch (Exception e) {
+                System.err.println("Error caught: " + e.getMessage());
+            }
         }
     }
 
     private void printLogo() {
-        StringBuilder builder = new StringBuilder();
-
-        builder
-                .append("  ____              _          _                 \n")
-                .append(" |  _ \\            | |        | |                \n")
-                .append(" | |_) | ___   ___ | | __  ___| |_ ___  _ __ ___ \n")
-                .append(" |  _ < / _ \\ / _ \\| |/ / / __| __/ _ \\| '__/ _ \\\n")
-                .append(" | |_) | (_) | (_) |   <  \\__ \\ || (_) | | |  __/\n")
-                .append(" |____/ \\___/ \\___/|_|\\_\\ |___/\\__\\___/|_|  \\___|\n");
-
-        System.out.println(builder.toString());
+        System.out.println("  ____              _          _                 ");
+        System.out.println(" |  _ \\            | |        | |                ");
+        System.out.println(" | |_) | ___   ___ | | __  ___| |_ ___  _ __ ___ ");
+        System.out.println(" |  _ < / _ \\ / _ \\| |/ / / __| __/ _ \\| '__/ _ \\");
+        System.out.println(" | |_) | (_) | (_) |   <  \\__ \\ || (_) | | |  __/");
+        System.out.println(" |____/ \\___/ \\___/|_|\\_\\ |___/\\__\\___/|_|  \\___|");
+        System.out.println("");
     }
 }

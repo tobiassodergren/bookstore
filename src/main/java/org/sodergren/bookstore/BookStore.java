@@ -9,6 +9,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static java.util.stream.Collectors.toList;
 
+/**
+ * This bookstore implements {@link BookList}.
+ *
+ * It keeps a search index separate from the stock.
+ *
+ * The search index may return 'old' data because speed is preferred over consistency.
+ * The stock is properly synchronized.
+ */
 public class BookStore implements BookList {
 
     private final Map<String, UUID> searchIndex = new ConcurrentHashMap<>();
@@ -115,7 +123,7 @@ public class BookStore implements BookList {
                 .map(Map.Entry::getKey)
                 .collect(toList());
 
-        toRemove.forEach(key -> searchIndex.remove(key));
+        toRemove.forEach(searchIndex::remove);
     }
 
     private int[] statusListToIntArray(List<BookOrderStatus> result) {
@@ -135,7 +143,11 @@ public class BookStore implements BookList {
         return 0;
     }
 
-    public void delete(UUID uuid) {
-        store.remove(uuid);
+    public void delete(UUID uuid) throws NotFoundException {
+        if (store.containsKey(uuid)) {
+            store.remove(uuid);
+        } else {
+            throw new NotFoundException("Book", uuid);
+        }
     }
 }

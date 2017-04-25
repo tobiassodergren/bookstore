@@ -20,14 +20,12 @@ public class ListCartsCommand implements Command {
     @Override
     public void executeLine(Matcher lineMatcher) {
         Collection<ServerCart> carts = repository.getCarts();
-        StringBuilder builder = new StringBuilder();
-        carts.forEach(c -> {
-            System.out.println(String.format("%s - number of items: %d, total: %s",
-                    c.getId(),
-                    c.getItems().size(),
-                    c.getTotal()));
-        });
-
+        carts.forEach(c ->
+                System.out.println(String.format("%s - number of items: %d, total: %s",
+                        c.getId(),
+                        c.getItems().size(),
+                        c.getTotal()))
+        );
     }
 
     @Override
