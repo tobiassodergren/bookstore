@@ -1,9 +1,6 @@
 package org.sodergren.admin;
 
-import org.sodergren.admin.operation.ListBooksCommand;
-import org.sodergren.admin.operation.ListCartsCommand;
-import org.sodergren.admin.operation.PrintHelpCommand;
-import org.sodergren.admin.operation.UpdateQuantityCommand;
+import org.sodergren.admin.operation.*;
 import org.sodergren.bookstore.BookStore;
 import org.sodergren.cart.CartRepository;
 import org.sodergren.model.entity.BookList;
@@ -23,7 +20,9 @@ public class AdminRepl {
 
         operations.add(new ListCartsCommand(cartRepository));
         operations.add(new ListBooksCommand(bookStore));
+        operations.add(new CreateBookCommand(bookStore));
         operations.add(new UpdateQuantityCommand(bookStore));
+        operations.add(new DeleteBookCommand(bookStore));
         operations.add(new PrintHelpCommand(operations));
 
         printLogo();

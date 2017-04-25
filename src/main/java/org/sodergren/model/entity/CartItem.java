@@ -9,4 +9,6 @@ public interface CartItem {
     BigDecimal getCost();
 
     UUID getId();
+
+    int getQuantity();
 }

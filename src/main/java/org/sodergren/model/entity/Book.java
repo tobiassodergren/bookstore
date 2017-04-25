@@ -9,10 +9,19 @@ import java.util.UUID;
  * is probably fine for this example code.
  */
 public class Book {
+    public static final Book UNEXISTING = new Book();
+
     private final UUID id;
     private final String title;
     private final String author;
     private final BigDecimal price;
+
+    private Book() {
+        this.title = "";
+        this.author = "";
+        this.price = BigDecimal.ZERO;
+        this.id = UUID.fromString("00000000-0000-0000-0000-000000000000");
+    }
 
     public Book(String title, String author, BigDecimal price) {
         if (title == null || author == null || price == null) {

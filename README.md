@@ -34,6 +34,7 @@ The book data contained a book with the same title/author combo
 but with different prices. I chose to include the price as a unique
 parameter.
 
+
 ## How to build
 
 ```bash
@@ -48,6 +49,8 @@ java version "1.8.0"
 
 $ java -jar target/bookstore-1.0-SNAPSHOT.jar file:books.csv
 ```
+
+A REPL will start. enter help and press Enter to administrate the book store
 
 ## Rest API
 
@@ -73,4 +76,12 @@ $ curl http://localhost:5000/api/v1/cart
 ```
 $ curl -X PUT  'http://localhost:5000/a4e-8c1298dfa706?bookId=40c1e827-4f71-3d13-adec-848d37ae5491&quantity=2'
   {"id":"37af43be-e12a-4888-bbe7-9b58ad310925","total":185.50,"items":[{"uuid":"40c1e827-4f71-3d13-adec-848d37ae5491","title":"Generic Title","author":"First Author","quantity":1,"price":185.50,"cost":185.50}]}
+```
+
+### Checkout cart
+* Path parameter specifies the cart
+
+```
+$ curl -X GET  'http://localhost:5000/a4e-8c1298dfa706/checkout'
+  ["OK","OK","OK","OK","OK","NOT_IN_STOCK","NOT_IN_STOCK","NOT_IN_STOCK","DOES_NOT_EXIST"]
 ```

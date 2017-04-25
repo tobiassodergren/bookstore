@@ -15,5 +15,5 @@ public interface Cart {
 
     BigDecimal getTotal();
 
-    Book[] toOrder();
+    List<UUID> toOrder();
 }

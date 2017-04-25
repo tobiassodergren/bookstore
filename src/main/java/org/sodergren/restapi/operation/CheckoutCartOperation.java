@@ -1,6 +1,7 @@
 package org.sodergren.restapi.operation;
 
 import org.sodergren.bookstore.BookStore;
+import org.sodergren.bookstore.NotFoundException;
 import org.sodergren.cart.CartRepository;
 import org.sodergren.model.entity.Book;
 import org.sodergren.model.entity.BookList;
@@ -8,6 +9,8 @@ import org.sodergren.model.entity.Cart;
 import org.sodergren.restapi.response.OrderStatusResponse;
 
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class CheckoutCartOperation extends OperationBase {
@@ -28,10 +31,23 @@ public class CheckoutCartOperation extends OperationBase {
 
         Cart cart = cartRepository.getCartById(cartId);
 
-        Book[] order = cart.toOrder();
+        List<UUID> order = cart.toOrder();
 
-        int[] result = bookStore.buy(order);
+        List<Book> books = new ArrayList<>();
 
-        return Response.ok(new OrderStatusResponse(result).toJson()).build();
+            for (UUID uuid : order) {
+                try {
+                    Book book = bookStore.getById(uuid);
+                    books.add(book);
+                } catch (NotFoundException e) {
+                    books.add(Book.UNEXISTING);
+                }
+            }
+
+            int[] result = bookStore.buy(books.toArray(new Book[books.size()]));
+
+            return Response.ok(new OrderStatusResponse(result).toJson()).build();
+
+
     }
 }

@@ -2,6 +2,7 @@ package org.sodergren.importer;
 
 import org.junit.Test;
 import org.sodergren.model.entity.Book;
+import org.sodergren.model.util.ParserUtil;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -31,7 +32,7 @@ public class CSVParserTest {
 
     @Test
     public void shouldHandlePrice() throws ParseException {
-        assertThat(CSVParser.parseBigDecimal("1,748.50"), equalTo(BigDecimal.valueOf(174850, 2)));
+        assertThat(ParserUtil.parseBigDecimal("1,748.50"), equalTo(BigDecimal.valueOf(174850, 2)));
     }
 
     @Test
@@ -41,13 +42,13 @@ public class CSVParserTest {
         assertThat(result.size(), equalTo(7));
 
         assertThat(result, hasItems(
-                new StockImport(new Book("Mastering åäö", "Average Swede", CSVParser.parseBigDecimal("762.00")), 15),
-                new StockImport(new Book("How To Spend Money", "Rich Bloke", CSVParser.parseBigDecimal("1,000,000.00")), 1),
-                new StockImport(new Book("Generic Title", "First Author", CSVParser.parseBigDecimal("185.50")), 5),
-                new StockImport(new Book("Generic Title", "Second Author", CSVParser.parseBigDecimal("1,748.00")), 3),
-                new StockImport(new Book("Random Sales", "Cunning Bastard", CSVParser.parseBigDecimal("999.00")), 20),
-                new StockImport(new Book("Random Sales", "Cunning Bastard", CSVParser.parseBigDecimal("499.50")), 3),
-                new StockImport(new Book("Desired", "Rich Bloke", CSVParser.parseBigDecimal("564.50")), 0))
+                new StockImport(new Book("Mastering åäö", "Average Swede", ParserUtil.parseBigDecimal("762.00")), 15),
+                new StockImport(new Book("How To Spend Money", "Rich Bloke", ParserUtil.parseBigDecimal("1,000,000.00")), 1),
+                new StockImport(new Book("Generic Title", "First Author", ParserUtil.parseBigDecimal("185.50")), 5),
+                new StockImport(new Book("Generic Title", "Second Author", ParserUtil.parseBigDecimal("1,748.00")), 3),
+                new StockImport(new Book("Random Sales", "Cunning Bastard", ParserUtil.parseBigDecimal("999.00")), 20),
+                new StockImport(new Book("Random Sales", "Cunning Bastard", ParserUtil.parseBigDecimal("499.50")), 3),
+                new StockImport(new Book("Desired", "Rich Bloke", ParserUtil.parseBigDecimal("564.50")), 0))
         );
     }
 
@@ -58,10 +59,10 @@ public class CSVParserTest {
         assertThat(result.size(), equalTo(4));
 
         assertThat(result, hasItems(
-                new StockImport(new Book("How To Spend Money", "Rich Bloke", CSVParser.parseBigDecimal("1,000,000.00")), 1),
-                new StockImport(new Book("Generic Title", "First Author", CSVParser.parseBigDecimal("185.50")), 5),
-                new StockImport(new Book("Generic Title", "Second Author", CSVParser.parseBigDecimal("1,748.00")), 3),
-                new StockImport(new Book("Desired", "Rich Bloke", CSVParser.parseBigDecimal("564.50")), 0))
+                new StockImport(new Book("How To Spend Money", "Rich Bloke", ParserUtil.parseBigDecimal("1,000,000.00")), 1),
+                new StockImport(new Book("Generic Title", "First Author", ParserUtil.parseBigDecimal("185.50")), 5),
+                new StockImport(new Book("Generic Title", "Second Author", ParserUtil.parseBigDecimal("1,748.00")), 3),
+                new StockImport(new Book("Desired", "Rich Bloke", ParserUtil.parseBigDecimal("564.50")), 0))
         );
 
     }

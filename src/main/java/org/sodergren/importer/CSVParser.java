@@ -1,16 +1,16 @@
 package org.sodergren.importer;
 
 import org.sodergren.model.entity.Book;
+import org.sodergren.model.util.ParserUtil;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static org.sodergren.model.util.ParserUtil.parseBigDecimal;
+import static org.sodergren.model.util.ParserUtil.parseQuantity;
 
 /**
  * Responsible for parsing book and corresponding quantities from a string containing CSV values.
@@ -36,20 +36,6 @@ class CSVParser {
         }
 
         return result;
-    }
-
-    static int parseQuantity(String data) {
-        return Integer.parseInt(data);
-    }
-
-    static BigDecimal parseBigDecimal(String data) throws ParseException {
-        NumberFormat instance = NumberFormat.getInstance(Locale.US);
-        if (!(instance instanceof DecimalFormat)) {
-            throw new IllegalStateException("Cannot parse number due to limitation of NumberFormat capabilities");
-        }
-        DecimalFormat format = (DecimalFormat) instance;
-        format.setParseBigDecimal(true);
-        return (BigDecimal) format.parse(data);
     }
 
 }

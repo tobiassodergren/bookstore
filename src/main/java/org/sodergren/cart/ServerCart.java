@@ -53,8 +53,14 @@ public class ServerCart implements Cart {
     }
 
     @Override
-    public Book[] toOrder() {
-        return new Book[0];
+    public List<UUID> toOrder() {
+        List<UUID> result = new ArrayList<>();
+        items.values().forEach(item->{
+            for (int i = 0; i < item.getQuantity(); i++) {
+                result.add(item.getId());
+            }
+        });
+        return Collections.unmodifiableList(result);
     }
 
     @Override

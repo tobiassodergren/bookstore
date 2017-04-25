@@ -135,4 +135,7 @@ public class BookStore implements BookList {
         return 0;
     }
 
+    public void delete(UUID uuid) {
+        store.remove(uuid);
+    }
 }
